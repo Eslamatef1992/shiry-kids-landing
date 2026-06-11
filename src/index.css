@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+[dir='rtl'] body {
+  font-family: 'Poppins', 'Tahoma', system-ui, sans-serif;
+}
