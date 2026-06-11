@@ -1,5 +1,7 @@
+import { Apple, PlayCircle } from 'lucide-react';
 import { useLang } from '../../contexts/LangContext';
 import { assetUrl } from '../../api/axios';
+import phoneMockup from '../../assets/figma/howto-2.png';
 
 export default function DownloadCta({ section = {} }) {
   const { t, field } = useLang();
@@ -7,38 +9,49 @@ export default function DownloadCta({ section = {} }) {
   const subtitle = field('subtitle', section)
     || 'Available now on the App Store and Google Play. Download Shiry Kids Fun and start enjoying exclusive deals today.';
 
+  const appStoreLink = section.app_store_link || '#';
+  const googlePlayLink = section.google_play_link || '#';
+  const mockup = section.mockup_image ? assetUrl(section.mockup_image) : phoneMockup;
+
   return (
-    <section id="download" className="py-20 md:py-28 bg-dark text-white">
+    <section id="download" className="py-20 md:py-28 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 md:px-10 grid md:grid-cols-2 gap-12 items-center">
         <div className="text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-5">{title}</h2>
-          <p className="text-white/70 text-base md:text-lg mb-8 max-w-md mx-auto md:mx-0">{subtitle}</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-accent mb-5">{title}</h2>
+          <p className="text-gray-500 text-base md:text-lg mb-8 max-w-md mx-auto md:mx-0">{subtitle}</p>
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            {section.app_store_link && (
-              <a href={section.app_store_link} target="_blank" rel="noreferrer">
-                {section.app_store_image ? (
-                  <img src={assetUrl(section.app_store_image)} alt="Download on the App Store" className="h-14" />
-                ) : (
-                  <span className="bg-white text-dark font-semibold px-6 py-3 rounded-xl block">App Store</span>
-                )}
+            {section.google_play_image ? (
+              <a href={googlePlayLink} target="_blank" rel="noreferrer">
+                <img src={assetUrl(section.google_play_image)} alt="Get it on Google Play" className="h-14" />
+              </a>
+            ) : (
+              <a href={googlePlayLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-dark text-white rounded-xl px-5 py-2.5 hover:bg-black transition">
+                <PlayCircle className="w-7 h-7" />
+                <span className="text-left leading-tight">
+                  <span className="block text-[10px] text-white/70">GET IT ON</span>
+                  <span className="block text-sm font-semibold -mt-0.5">Google Play</span>
+                </span>
               </a>
             )}
-            {section.google_play_link && (
-              <a href={section.google_play_link} target="_blank" rel="noreferrer">
-                {section.google_play_image ? (
-                  <img src={assetUrl(section.google_play_image)} alt="Get it on Google Play" className="h-14" />
-                ) : (
-                  <span className="bg-white text-dark font-semibold px-6 py-3 rounded-xl block">Google Play</span>
-                )}
+            {section.app_store_image ? (
+              <a href={appStoreLink} target="_blank" rel="noreferrer">
+                <img src={assetUrl(section.app_store_image)} alt="Download on the App Store" className="h-14" />
+              </a>
+            ) : (
+              <a href={appStoreLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-dark text-white rounded-xl px-5 py-2.5 hover:bg-black transition">
+                <Apple className="w-7 h-7" />
+                <span className="text-left leading-tight">
+                  <span className="block text-[10px] text-white/70">Download on the</span>
+                  <span className="block text-sm font-semibold -mt-0.5">App Store</span>
+                </span>
               </a>
             )}
           </div>
         </div>
-        {section.mockup_image && (
-          <div className="flex justify-center">
-            <img src={assetUrl(section.mockup_image)} alt="App preview" className="max-h-[420px] object-contain" />
-          </div>
-        )}
+        <div className="relative flex justify-center">
+          <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-primary/10 -z-10" />
+          <img src={mockup} alt="App preview" className="max-h-[420px] object-contain drop-shadow-2xl" />
+        </div>
       </div>
     </section>
   );

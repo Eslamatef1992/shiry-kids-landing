@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import { useLang } from '../contexts/LangContext';
 
 export default function Header({ sections = {} }) {
@@ -45,9 +46,10 @@ export default function Header({ sections = {} }) {
         <div className="flex items-center gap-3">
           <button
             onClick={toggle}
-            className="text-white border border-white/40 rounded-full px-3 py-1.5 text-xs font-semibold hover:bg-white/10 transition"
+            className="flex items-center gap-1 text-white border border-white/40 rounded-full px-3 py-1.5 text-xs font-semibold hover:bg-white/10 transition"
           >
             {lang === 'en' ? 'العربية' : 'ENGLISH'}
+            <ChevronDown className="w-3.5 h-3.5" />
           </button>
           <a
             href={downloadLink}

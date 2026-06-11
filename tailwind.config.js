@@ -7,6 +7,7 @@ export default {
         primary: '#FF383C',
         accent: '#8D1006',
         dark: '#1A1A2E',
+        cream: '#FAF5F5',
       },
       fontFamily: {
         sans: ['Poppins', 'system-ui', 'sans-serif'],

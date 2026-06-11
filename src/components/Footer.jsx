@@ -1,67 +1,75 @@
 import { Link } from 'react-router-dom';
+import { Facebook, Instagram, Twitter, Music2, Youtube, ChevronDown } from 'lucide-react';
 import { useLang } from '../contexts/LangContext';
+import logoBadge from '../assets/figma/logo-badge.png';
 
 const SOCIAL_ICONS = {
-  facebook_link: { label: 'Facebook', icon: 'f' },
-  instagram_link: { label: 'Instagram', icon: '◎' },
-  twitter_link: { label: 'X', icon: '𝕏' },
-  tiktok_link: { label: 'TikTok', icon: '♪' },
-  youtube_link: { label: 'YouTube', icon: '▶' },
+  facebook_link: { label: 'Facebook', Icon: Facebook },
+  instagram_link: { label: 'Instagram', Icon: Instagram },
+  twitter_link: { label: 'X', Icon: Twitter },
+  tiktok_link: { label: 'TikTok', Icon: Music2 },
+  youtube_link: { label: 'YouTube', Icon: Youtube },
 };
 
 export default function Footer({ sections = {} }) {
-  const { t, field } = useLang();
+  const { t, lang, toggle, field } = useLang();
   const footer = sections.footer || {};
   const year = new Date().getFullYear();
 
   const navLinks = [
     { href: '/#how-to-use', label: t('nav_how_to_use') },
-    { href: '/#about', label: t('nav_about') },
     { href: '/#partners', label: t('nav_partners') },
+    { href: '/#about', label: t('nav_about') },
     { href: '/#why-us', label: t('nav_why') },
   ];
 
-  const copyright = field('copyright', footer) || `© ${year} SHIRY KIDS FUN. ${t('all_rights_reserved')}`;
+  const copyright = field('copyright', footer) || `© ${year} ${t('all_rights_reserved')}`;
 
   return (
-    <footer className="bg-dark text-white pt-14 pb-8">
+    <footer className="bg-white text-dark pt-14 pb-8 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-5 md:px-10">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Shiry Kids" className="w-12 h-12 object-contain rounded-lg bg-white/90 p-1" />
-            <span className="font-extrabold text-xl tracking-wide">SHIRY KIDS FUN</span>
-          </div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <Link to="/" className="flex items-center gap-3 shrink-0">
+            <img src={logoBadge} alt="Shiry Kids Fun" className="w-14 h-14 object-contain" />
+          </Link>
 
-          <nav className="flex flex-wrap gap-x-8 gap-y-3">
+          <nav className="flex flex-wrap items-center gap-x-8 gap-y-3">
             {navLinks.map(l => (
-              <Link key={l.href} to={l.href} className="text-white/70 hover:text-white text-sm font-medium transition">
+              <Link key={l.href} to={l.href} className="text-dark/80 hover:text-accent text-sm font-semibold underline underline-offset-4 transition">
                 {l.label}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
-            {Object.entries(SOCIAL_ICONS).map(([key, { label, icon }]) => (
+            {Object.entries(SOCIAL_ICONS).map(([key, { label, Icon }]) => (
               footer[key] ? (
                 <a
                   key={key}
                   href={footer[key]}
                   target="_blank" rel="noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition"
+                  className="w-10 h-10 rounded-full bg-accent text-white hover:bg-primary flex items-center justify-center transition"
                 >
-                  {icon}
+                  <Icon className="w-4 h-4" />
                 </a>
               ) : null
             ))}
+            <button
+              onClick={toggle}
+              className="flex items-center gap-1 text-dark/80 hover:text-accent text-sm font-semibold transition"
+            >
+              {lang === 'en' ? 'ENGLISH' : 'العربية'}
+              <ChevronDown className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
+        <div className="border-t border-gray-100 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <span>{copyright}</span>
           <div className="flex gap-6">
-            <Link to="/terms-conditions" className="hover:text-white transition">{t('terms_conditions')}</Link>
-            <Link to="/privacy-policy" className="hover:text-white transition">{t('privacy_policy')}</Link>
+            <Link to="/terms-conditions" className="hover:text-accent transition">{t('terms_conditions')}</Link>
+            <Link to="/privacy-policy" className="hover:text-accent transition">{t('privacy_policy')}</Link>
           </div>
         </div>
       </div>
