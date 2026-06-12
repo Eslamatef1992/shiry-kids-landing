@@ -13,3 +13,27 @@ body {
 [dir='rtl'] body {
   font-family: 'Poppins', 'Tahoma', system-ui, sans-serif;
 }
+
+@keyframes circle-converge-1 {
+  0% { opacity: 0; transform: translate(140px, 140px) scale(0.4) rotate(-160deg); }
+  65% { opacity: 1; transform: translate(-12px, -12px) scale(1.06) rotate(12deg); }
+  100% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+@keyframes circle-converge-2 {
+  0% { opacity: 0; transform: translate(-120px, -120px) scale(0.4) rotate(160deg); }
+  65% { opacity: 1; transform: translate(10px, 10px) scale(1.06) rotate(-12deg); }
+  100% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+.circle-deco {
+  opacity: 0;
+}
+
+.circle-deco.animate-circle-1 {
+  animation: circle-converge-1 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.circle-deco.animate-circle-2 {
+  animation: circle-converge-2 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
