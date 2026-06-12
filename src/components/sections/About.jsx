@@ -21,7 +21,8 @@ export default function About({ section = {} }) {
           <p className="text-gray-600 leading-relaxed text-base md:text-lg whitespace-pre-line">{text}</p>
         </div>
         <div className="relative flex justify-center">
-          <div className="absolute -left-16 -bottom-16 w-80 h-80 md:w-[26rem] md:h-[26rem] rounded-full border-[24px] border-primary/15 -z-10" />
+          <div className="absolute -left-20 -bottom-24 w-72 h-72 md:w-[22rem] md:h-[22rem] rounded-full border-[20px] border-primary/10 -z-10" />
+          <div className="absolute -left-6 -bottom-6 w-52 h-52 md:w-64 md:h-64 rounded-full border-[20px] border-primary/15 -z-10" />
           <img src={image} alt={title} className="w-full max-w-md rounded-3xl object-cover shadow-xl" />
         </div>
       </div>
