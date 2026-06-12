@@ -35,7 +35,7 @@ export default function Footer({ sections = {} }) {
       <div className="max-w-7xl mx-auto px-5 md:px-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={logoBadge} alt="Shiry Kids Fun" className="w-14 h-14 object-contain" />
+            <img src={logoBadge} alt="Shiry Kids Fun" className="w-20 h-20 object-contain" />
           </Link>
 
           <nav className="flex flex-wrap items-center gap-x-8 gap-y-3">
