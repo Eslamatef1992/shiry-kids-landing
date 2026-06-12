@@ -33,12 +33,12 @@ export default function Footer({ sections = {} }) {
   return (
     <footer className="bg-white text-dark pt-14 pb-8 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-5 md:px-10">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div className="flex flex-col items-center text-center gap-8 md:flex-row md:items-center md:justify-between md:text-left">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={logoBadge} alt="Shiry Kids Fun" className="w-40 h-40 object-contain" />
+            <img src={logoBadge} alt="Shiry Kids Fun" className="w-24 h-24 md:w-40 md:h-40 object-contain" />
           </Link>
 
-          <nav className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-8 md:gap-y-3">
             {navLinks.map(l => (
               <Link key={l.href} to={l.href} className="text-dark/80 hover:text-accent text-sm font-semibold underline underline-offset-4 transition">
                 {l.label}
@@ -46,10 +46,11 @@ export default function Footer({ sections = {} }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 md:gap-4">
-            {Object.entries(SOCIAL_ICONS).map(([key, { label, icon }]) => (
-              <div key={key} className="flex items-center gap-3 md:gap-4">
+          <div className="flex flex-col items-center gap-4 md:flex-row md:gap-4">
+            <div className="flex items-center gap-3 md:gap-4">
+              {Object.entries(SOCIAL_ICONS).map(([key, { label, icon }]) => (
                 <a
+                  key={key}
                   href={footer[key] || '#'}
                   target={footer[key] ? '_blank' : undefined}
                   rel="noreferrer"
@@ -58,9 +59,9 @@ export default function Footer({ sections = {} }) {
                 >
                   <img src={icon} alt={label} className="w-10 h-10" />
                 </a>
-                <span className="h-6 w-px bg-gray-200" />
-              </div>
-            ))}
+              ))}
+            </div>
+            <span className="hidden md:inline-block h-6 w-px bg-gray-200" />
             <button
               onClick={toggle}
               className="flex items-center gap-1 text-dark/80 hover:text-accent text-sm font-semibold transition whitespace-nowrap"
@@ -71,7 +72,7 @@ export default function Footer({ sections = {} }) {
           </div>
         </div>
 
-        <div className="border-t border-gray-100 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+        <div className="border-t border-gray-100 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 text-sm text-gray-400 text-center">
           <span>{copyright}</span>
           <div className="flex gap-6">
             <Link to="/terms-conditions" className="hover:text-accent transition">{t('terms_conditions')}</Link>
