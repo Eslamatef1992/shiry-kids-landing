@@ -1,7 +1,8 @@
-import { Apple, PlayCircle } from 'lucide-react';
 import { useLang } from '../../contexts/LangContext';
 import { assetUrl } from '../../api/axios';
 import phoneMockup from '../../assets/figma/howto-2.png';
+import googlePlayBadge from '../../assets/figma/badge-google-play.svg';
+import appStoreBadge from '../../assets/figma/badge-app-store.svg';
 
 export default function DownloadCta({ section = {} }) {
   const { t, field } = useLang();
@@ -20,32 +21,20 @@ export default function DownloadCta({ section = {} }) {
           <h2 className="text-3xl md:text-4xl font-extrabold text-accent mb-5">{title}</h2>
           <p className="text-gray-500 text-base md:text-lg mb-8 max-w-md mx-auto md:mx-0">{subtitle}</p>
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            {section.google_play_image ? (
-              <a href={googlePlayLink} target="_blank" rel="noreferrer">
-                <img src={assetUrl(section.google_play_image)} alt="Get it on Google Play" className="h-14" />
-              </a>
-            ) : (
-              <a href={googlePlayLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-dark text-white rounded-xl px-5 py-2.5 hover:bg-black transition">
-                <PlayCircle className="w-7 h-7" />
-                <span className="text-left leading-tight">
-                  <span className="block text-[10px] text-white/70">GET IT ON</span>
-                  <span className="block text-sm font-semibold -mt-0.5">Google Play</span>
-                </span>
-              </a>
-            )}
-            {section.app_store_image ? (
-              <a href={appStoreLink} target="_blank" rel="noreferrer">
-                <img src={assetUrl(section.app_store_image)} alt="Download on the App Store" className="h-14" />
-              </a>
-            ) : (
-              <a href={appStoreLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-dark text-white rounded-xl px-5 py-2.5 hover:bg-black transition">
-                <Apple className="w-7 h-7" />
-                <span className="text-left leading-tight">
-                  <span className="block text-[10px] text-white/70">Download on the</span>
-                  <span className="block text-sm font-semibold -mt-0.5">App Store</span>
-                </span>
-              </a>
-            )}
+            <a href={googlePlayLink} target="_blank" rel="noreferrer">
+              <img
+                src={section.google_play_image ? assetUrl(section.google_play_image) : googlePlayBadge}
+                alt="Get it on Google Play"
+                className="h-14"
+              />
+            </a>
+            <a href={appStoreLink} target="_blank" rel="noreferrer">
+              <img
+                src={section.app_store_image ? assetUrl(section.app_store_image) : appStoreBadge}
+                alt="Download on the App Store"
+                className="h-14"
+              />
+            </a>
           </div>
         </div>
         <div className="relative flex justify-center">

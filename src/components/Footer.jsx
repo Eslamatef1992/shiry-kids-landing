@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Music2, Youtube, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { useLang } from '../contexts/LangContext';
 import logoBadge from '../assets/figma/logo-badge.png';
+import iconLinkedin from '../assets/figma/icon-linkedin.svg';
+import iconInstagram from '../assets/figma/icon-instagram.svg';
+import iconX from '../assets/figma/icon-x.svg';
+import iconSnapchat from '../assets/figma/icon-snapchat.svg';
+import iconWhatsapp from '../assets/figma/icon-whatsapp.svg';
 
 const SOCIAL_ICONS = {
-  facebook_link: { label: 'Facebook', Icon: Facebook },
-  instagram_link: { label: 'Instagram', Icon: Instagram },
-  twitter_link: { label: 'X', Icon: Twitter },
-  tiktok_link: { label: 'TikTok', Icon: Music2 },
-  youtube_link: { label: 'YouTube', Icon: Youtube },
+  facebook_link: { label: 'LinkedIn', icon: iconLinkedin },
+  instagram_link: { label: 'Instagram', icon: iconInstagram },
+  twitter_link: { label: 'X', icon: iconX },
+  tiktok_link: { label: 'Snapchat', icon: iconSnapchat },
+  youtube_link: { label: 'WhatsApp', icon: iconWhatsapp },
 };
 
 export default function Footer({ sections = {} }) {
@@ -42,16 +47,16 @@ export default function Footer({ sections = {} }) {
           </nav>
 
           <div className="flex items-center gap-3">
-            {Object.entries(SOCIAL_ICONS).map(([key, { label, Icon }]) => (
+            {Object.entries(SOCIAL_ICONS).map(([key, { label, icon }]) => (
               footer[key] ? (
                 <a
                   key={key}
                   href={footer[key]}
                   target="_blank" rel="noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full bg-accent text-white hover:bg-primary flex items-center justify-center transition"
+                  className="w-10 h-10 rounded-full overflow-hidden hover:opacity-80 transition flex items-center justify-center"
                 >
-                  <Icon className="w-4 h-4" />
+                  <img src={icon} alt={label} className="w-10 h-10" />
                 </a>
               ) : null
             ))}
