@@ -23,8 +23,6 @@ export default function CmsPage({ slug }) {
       .finally(() => setLoading(false));
   }, [slug]);
 
-  const isPrivacy = slug === 'privacy-policy';
-
   const titleBlock = (
     <div className="flex items-center gap-3 mb-8">
       <span className="w-1.5 h-7 bg-primary/15 rounded shrink-0" />
@@ -52,26 +50,19 @@ export default function CmsPage({ slug }) {
     <div>
       <Header sections={sections} />
       <div className="bg-[#000508] h-20" />
-      {isPrivacy ? (
-        <div className="max-w-6xl mx-auto px-5 pt-10 pb-14 min-h-[40vh] grid md:grid-cols-3 gap-10 items-start">
-          <div className="md:col-span-2 order-2 md:order-1">
-            {titleBlock}
-            {content}
-          </div>
-          <div className="md:col-span-1 order-1 md:order-2 flex justify-center md:justify-end">
-            <img
-              src={privacyIllustration}
-              alt=""
-              className="w-full max-w-xs md:sticky md:top-28"
-            />
-          </div>
-        </div>
-      ) : (
-        <div className="max-w-3xl mx-auto px-5 pt-10 pb-14 min-h-[40vh]">
+      <div className="max-w-6xl mx-auto px-5 pt-10 pb-14 min-h-[40vh] grid md:grid-cols-3 gap-10 items-start">
+        <div className="md:col-span-2 order-2 md:order-1">
           {titleBlock}
           {content}
         </div>
-      )}
+        <div className="md:col-span-1 order-1 md:order-2 flex justify-center md:justify-end">
+          <img
+            src={privacyIllustration}
+            alt=""
+            className="w-full max-w-xs md:sticky md:top-28"
+          />
+        </div>
+      </div>
       <Footer sections={sections} />
     </div>
   );
