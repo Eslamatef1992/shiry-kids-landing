@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import api from '../api/axios';
 import useLanding from '../hooks/useLanding';
 import { useLang } from '../contexts/LangContext';
+import privacyIllustration from '../assets/figma/privacy-illustration.svg';
 
 export default function CmsPage({ slug }) {
   const { sections } = useLanding();
@@ -34,11 +35,20 @@ export default function CmsPage({ slug }) {
         {loading && <p className="text-center text-gray-400">Loading…</p>}
         {!loading && error && <p className="text-center text-gray-400">Content not available yet.</p>}
         {!loading && page && (
-          <div
-            className="prose max-w-none"
-            dir={lang === 'ar' ? 'rtl' : 'ltr'}
-            dangerouslySetInnerHTML={{ __html: field('content', page) }}
-          />
+          <>
+            {slug === 'privacy-policy' && (
+              <img
+                src={privacyIllustration}
+                alt=""
+                className="w-full max-w-sm mx-auto mb-12"
+              />
+            )}
+            <div
+              className="prose max-w-none prose-headings:font-extrabold prose-headings:text-dark prose-p:text-gray-500"
+              dir={lang === 'ar' ? 'rtl' : 'ltr'}
+              dangerouslySetInnerHTML={{ __html: field('content', page) }}
+            />
+          </>
         )}
       </div>
       <Footer sections={sections} />
