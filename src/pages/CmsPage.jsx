@@ -23,36 +23,55 @@ export default function CmsPage({ slug }) {
       .finally(() => setLoading(false));
   }, [slug]);
 
+  const isPrivacy = slug === 'privacy-policy';
+
+  const titleBlock = (
+    <div className="flex items-center gap-3 mb-8">
+      <span className="w-1.5 h-7 bg-primary/15 rounded shrink-0" />
+      <h1 className="text-2xl md:text-3xl font-extrabold text-accent">
+        {page ? field('title', page) : '—'}
+      </h1>
+    </div>
+  );
+
+  const content = (
+    <>
+      {loading && <p className="text-center text-gray-400">Loading…</p>}
+      {!loading && error && <p className="text-center text-gray-400">Content not available yet.</p>}
+      {!loading && page && (
+        <div
+          className="prose max-w-none prose-headings:font-extrabold prose-headings:text-dark prose-p:text-gray-500"
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
+          dangerouslySetInnerHTML={{ __html: field('content', page) }}
+        />
+      )}
+    </>
+  );
+
   return (
     <div>
       <Header sections={sections} />
       <div className="bg-[#000508] h-20" />
-      <div className="max-w-3xl mx-auto px-5 pt-10 pb-14 min-h-[40vh]">
-        <div className="flex items-center gap-3 mb-8">
-          <span className="w-1.5 h-7 bg-primary/15 rounded shrink-0" />
-          <h1 className="text-2xl md:text-3xl font-extrabold text-accent">
-            {page ? field('title', page) : '—'}
-          </h1>
-        </div>
-        {loading && <p className="text-center text-gray-400">Loading…</p>}
-        {!loading && error && <p className="text-center text-gray-400">Content not available yet.</p>}
-        {!loading && page && (
-          <>
-            {slug === 'privacy-policy' && (
-              <img
-                src={privacyIllustration}
-                alt=""
-                className="w-full max-w-sm mx-auto mb-12"
-              />
-            )}
-            <div
-              className="prose max-w-none prose-headings:font-extrabold prose-headings:text-dark prose-p:text-gray-500"
-              dir={lang === 'ar' ? 'rtl' : 'ltr'}
-              dangerouslySetInnerHTML={{ __html: field('content', page) }}
+      {isPrivacy ? (
+        <div className="max-w-6xl mx-auto px-5 pt-10 pb-14 min-h-[40vh] grid md:grid-cols-3 gap-10 items-start">
+          <div className="md:col-span-2 order-2 md:order-1">
+            {titleBlock}
+            {content}
+          </div>
+          <div className="md:col-span-1 order-1 md:order-2 flex justify-center md:justify-end">
+            <img
+              src={privacyIllustration}
+              alt=""
+              className="w-full max-w-xs md:sticky md:top-28"
             />
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      ) : (
+        <div className="max-w-3xl mx-auto px-5 pt-10 pb-14 min-h-[40vh]">
+          {titleBlock}
+          {content}
+        </div>
+      )}
       <Footer sections={sections} />
     </div>
   );
