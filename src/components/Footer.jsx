@@ -46,23 +46,24 @@ export default function Footer({ sections = {} }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 md:gap-4">
             {Object.entries(SOCIAL_ICONS).map(([key, { label, icon }]) => (
-              footer[key] ? (
+              <div key={key} className="flex items-center gap-3 md:gap-4">
                 <a
-                  key={key}
-                  href={footer[key]}
-                  target="_blank" rel="noreferrer"
+                  href={footer[key] || '#'}
+                  target={footer[key] ? '_blank' : undefined}
+                  rel="noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full overflow-hidden hover:opacity-80 transition flex items-center justify-center"
+                  className="w-10 h-10 rounded-full overflow-hidden hover:opacity-80 transition flex items-center justify-center shrink-0"
                 >
                   <img src={icon} alt={label} className="w-10 h-10" />
                 </a>
-              ) : null
+                <span className="h-6 w-px bg-gray-200" />
+              </div>
             ))}
             <button
               onClick={toggle}
-              className="flex items-center gap-1 text-dark/80 hover:text-accent text-sm font-semibold transition"
+              className="flex items-center gap-1 text-dark/80 hover:text-accent text-sm font-semibold transition whitespace-nowrap"
             >
               {lang === 'en' ? 'ENGLISH' : 'العربية'}
               <ChevronDown className="w-4 h-4" />
