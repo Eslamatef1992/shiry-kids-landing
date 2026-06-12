@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import CmsPage from './pages/CmsPage';
+import CookieConsent from './components/CookieConsent';
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/privacy-policy" element={<CmsPage slug="privacy-policy" />} />
         <Route path="/terms-conditions" element={<CmsPage slug="terms-conditions" />} />
       </Routes>
+      <CookieConsent />
     </BrowserRouter>
   );
 }

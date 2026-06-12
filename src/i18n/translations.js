@@ -15,6 +15,10 @@ export const translations = {
     all_rights_reserved: 'ALL RIGHTS RESERVED.',
     home: 'Home',
     back_home: 'Back to Home',
+    privacy_promise_title: 'Privacy Promise',
+    privacy_promise_text: "Welcome! We're glad you're here and want you to know that we respect your privacy and your right to control how we collect, use, and share your personal data. Please read our {link} to learn more.",
+    cookie_reject_all: 'Reject All',
+    cookie_confirm: 'Confirm',
   },
   ar: {
     nav_how_to_use: 'كيفية الاستخدام',
@@ -32,5 +36,9 @@ export const translations = {
     all_rights_reserved: 'جميع الحقوق محفوظة.',
     home: 'الرئيسية',
     back_home: 'العودة للرئيسية',
+    privacy_promise_title: 'وعد الخصوصية',
+    privacy_promise_text: 'مرحبًا بك! يسعدنا وجودك هنا، ونريدك أن تعلم أننا نحترم خصوصيتك وحقك في التحكم في كيفية جمعنا واستخدامنا ومشاركتنا لبياناتك الشخصية. يرجى قراءة {link} لمعرفة المزيد.',
+    cookie_reject_all: 'رفض الكل',
+    cookie_confirm: 'تأكيد',
   },
 };

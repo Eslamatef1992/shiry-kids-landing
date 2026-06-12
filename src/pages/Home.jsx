@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import HowToUse from '../components/sections/HowToUse';
@@ -24,12 +25,24 @@ export default function Home() {
     <div>
       <Header sections={sections} />
       <Hero section={sections.hero} />
-      <About section={sections.about} />
-      <HowToUse items={items.how_to_use || []} />
-      <AboutGallery section={sections.about2} items={items.about_gallery || []} />
-      <Partners items={items.partners || []} />
-      <WhyChoose items={items.why_choose || []} />
-      <DownloadCta section={sections.download_app} />
+      <Reveal>
+        <About section={sections.about} />
+      </Reveal>
+      <Reveal>
+        <HowToUse items={items.how_to_use || []} />
+      </Reveal>
+      <Reveal>
+        <AboutGallery section={sections.about2} items={items.about_gallery || []} />
+      </Reveal>
+      <Reveal>
+        <Partners items={items.partners || []} />
+      </Reveal>
+      <Reveal>
+        <WhyChoose items={items.why_choose || []} />
+      </Reveal>
+      <Reveal>
+        <DownloadCta section={sections.download_app} />
+      </Reveal>
       <Footer sections={sections} />
     </div>
   );

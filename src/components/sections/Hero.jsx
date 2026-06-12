@@ -20,24 +20,24 @@ export default function Hero({ section = {} }) {
       className="relative min-h-[600px] md:min-h-[760px] flex items-center bg-dark bg-cover bg-center"
       style={{ backgroundImage: `linear-gradient(90deg, rgba(13,13,26,0.85) 0%, rgba(13,13,26,0.55) 45%, rgba(13,13,26,0.15) 100%), url(${bg})` }}
     >
-      <div className="max-w-7xl w-full mx-auto px-5 md:px-10 pt-28 pb-16">
+      <div className="max-w-7xl w-full mx-auto px-5 md:px-10 pt-24 sm:pt-28 pb-16">
         <div className="max-w-xl">
-          <h1 className="text-white font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight mb-6">
+          <h1 className="text-white font-extrabold text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight mb-4 sm:mb-6">
             {title}
           </h1>
-          <p className="text-white/85 text-base md:text-lg mb-10">
+          <p className="text-white/85 text-sm sm:text-base md:text-lg mb-8 sm:mb-10">
             {subtitle}
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <a
               href={primaryLink}
-              className="bg-primary hover:bg-accent transition text-white font-semibold px-8 py-3.5 rounded-full shadow-lg shadow-primary/30"
+              className="bg-primary hover:bg-accent transition text-white font-semibold px-8 py-3.5 rounded-full shadow-lg shadow-primary/30 text-center"
             >
               {primaryText}
             </a>
             <a
               href={secondaryLink}
-              className="border border-white/60 text-white hover:bg-white/10 transition font-semibold px-8 py-3.5 rounded-full"
+              className="border border-white/60 text-white hover:bg-white/10 transition font-semibold px-8 py-3.5 rounded-full text-center"
             >
               {secondaryText}
             </a>
