@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { useLang } from '../contexts/LangContext';
-import logoBadge from '../assets/figma/logo-badge-cropped.png';
+import logoBadge from '../assets/figma/logo-badge-new.svg';
 import iconLinkedin from '../assets/figma/icon-linkedin.svg';
 import iconInstagram from '../assets/figma/icon-instagram.svg';
 import iconX from '../assets/figma/icon-x.svg';
