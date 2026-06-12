@@ -70,9 +70,6 @@ export default function Header({ sections = {} }) {
               {l.label}
             </a>
           ))}
-          <a href={downloadLink} className="bg-primary text-white font-semibold text-sm px-5 py-2.5 rounded-full text-center">
-            {t('download_app')}
-          </a>
         </div>
       )}
     </header>
