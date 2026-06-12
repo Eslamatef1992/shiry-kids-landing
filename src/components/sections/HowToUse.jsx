@@ -19,21 +19,18 @@ export default function HowToUse({ items = [] }) {
       ];
 
   return (
-    <section id="how-to-use" className="py-20 md:py-28 bg-gray-50">
+    <section id="how-to-use" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-5 md:px-10">
         <SectionHeading title={t('how_to_use_title')} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {list.map((item, idx) => (
             <div key={item.id} className="text-center">
-              <div className="relative mx-auto mb-6 w-full max-w-[260px]">
+              <div className="bg-cream rounded-3xl p-8 mb-6 flex items-center justify-center">
                 <img
                   src={item.image ? assetUrl(item.image) : DEFAULT_IMAGES[idx % DEFAULT_IMAGES.length]}
                   alt={field('title', item)}
-                  className="w-full rounded-3xl shadow-lg border-8 border-white"
+                  className="w-full max-w-[260px] rounded-2xl shadow-lg"
                 />
-                <span className="absolute -top-3 -left-3 w-9 h-9 rounded-full bg-primary text-white font-bold flex items-center justify-center shadow-lg">
-                  {idx + 1}
-                </span>
               </div>
               <h3 className="font-bold text-lg text-dark">{field('title', item)}</h3>
               {field('description', item) && (
