@@ -24,11 +24,11 @@ export default function AboutGallery({ section = {}, items = [] }) {
   const [imgTop, imgRight, imgOverlap] = images;
 
   return (
-    <section className="py-20 md:py-28 bg-[#0B0B0F]">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-5 md:px-10 grid md:grid-cols-2 gap-12 items-center">
         <div>
           <SectionHeading title={title} className="!mb-6" />
-          <p className="text-gray-300 leading-relaxed text-base md:text-lg whitespace-pre-line">{text}</p>
+          <p className="text-gray-600 leading-relaxed text-base md:text-lg whitespace-pre-line">{text}</p>
         </div>
         <div className="relative pb-16 md:pb-20">
           <div className="grid grid-cols-2 gap-4">
